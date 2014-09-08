@@ -1,0 +1,38 @@
+if field
+    .field.row(id='#{field.uuid}')
+        .span3
+            label Field type
+            select(name='type_key')
+                each key in field_types
+                    if key == field.type_key
+                        option(value='#{key}', selected='selected')= field_types[key].label
+                    else
+                        option(value='#{key}')= field_types[key].label
+
+            label Field name
+            input(type='text', name='name', value='#{field.name}')
+
+            .btn-group
+                button.btn.btn-mini.meta.shift-up shift up
+                button.btn.btn-mini.meta.shift-down shift down
+            .btn-group
+                button.btn.btn-mini.meta.delete delete 
+        .span6
+
+else
+    .field.row
+        .span3
+            label Field type
+            select(name='type_key')
+                each key in field_types
+                    option(value='#{key}')= field_types[key].label
+
+            label Field name
+            input(type='text', name='name')
+
+            .btn-group
+                button.btn.btn-mini.meta.shift-up shift up
+                button.btn.btn-mini.meta.shift-down shift down
+            .btn-group
+                button.btn.btn-mini.meta.delete delete 
+        .span6

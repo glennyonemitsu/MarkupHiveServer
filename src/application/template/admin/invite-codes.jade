@@ -1,0 +1,19 @@
+extends admin/base
+
+block content
+
+    .row.span12
+        h1 Invitation Codes
+
+        ul
+            li: a(href='#{u(".create_invite_codes", count=1)}') Create 1 invite code
+            li: a(href='#{u(".create_invite_codes", count=5)}') Create 5 invite code
+            li: a(href='#{u(".create_invite_codes", count=10)}') Create 10 invite code
+            li: a(href='#{u(".create_invite_codes", count=100)}') Create 100 invite code
+
+        h2 Unclaimed Invite Codes (click to delete)
+        ul
+            each code in codes
+                li  #{code.id} 
+                    a(href='#{u(".delete_invite_code", id=code.id)}') #{code.code}
+

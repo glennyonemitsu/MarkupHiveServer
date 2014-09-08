@@ -1,0 +1,81 @@
+!!! 5
+
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        title 
+            if title
+                = title
+                |  - 
+            | Markup Hive Manager
+
+        link(href='//fonts.googleapis.com/css?family=Merriweather+Sans:300|Roboto:300,500,700|Roboto+Slab:400', rel='stylesheet', type='text/css')
+        link(href="/static/css/bootstrap.min.css", rel="stylesheet", media="screen")
+        link(href="/static/css/bootstrap-responsive.min.css", rel="stylesheet", media="screen")
+        link(href="/static/css/font-awesome.min.css", rel="stylesheet", media="screen")
+
+        link(href="/static/css/manager.css", rel="stylesheet", media="screen")
+
+        script(src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
+        script(src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js")
+        script(src="/static/js/bootstrap.min.js")
+        script(src="/static/js/manager.js")
+
+    body
+        .row
+            .span3.sidebar
+                ul.nav.nav-list
+
+                    if account.cms
+                        li.nav-header Content Entries
+                        li: a(href="#{u('cms.entry_type_list', action='add')}") Add new entry
+                        li: a(href="#{u('cms.entry_type_list', action='edit')}") Edit entry
+
+                    li.nav-header General
+                    li: a(href='#{u('manager.home')}') Manager Dashboard
+                    li: a(href="#{u('manager.data_transfer_overview')}") Data Transfer Stats
+                    li: a(href="#{u('manager.api_keys_home')}") API Keys
+                    if account.custom_domain
+                        li: a(href="#{u('manager.canonical_domain')}") Canonical Domain
+
+                    if account.cms
+                        li.nav-header CMS Management
+                        li: a(href="#{u('cms.content_type_create')}") Create New Content Type
+                        li: a(href="#{u('cms.content_type_list')}") List Content Types
+
+                    li.nav-header User Account
+                    li: a(href="#{u('manager.password_change')}") Change Login Password
+                    li: a(href="#{u('manager.logout')}") Logout
+
+                    li: footer: :markdown
+                        Please join us on IRC: freenode #markuphive for 
+                        instant answers to any questions you may have.
+
+                        Support via e-mail is also available at 
+                        [support@markuphive.com](mailto:support@markuphive.com) 
+
+
+            .span9
+                if title
+                    h1= title
+
+                notices = get_flashes('notice')
+                if notices
+                    each notice in notices
+                        .alert
+                            button(type="button", data-dismiss="alert").close &times;
+                            = notice[1]
+
+                successes = get_flashes('success')
+                if successes
+                    each notice in successes
+                        .alert.alert-success
+                            button(type="button", data-dismiss="alert").close &times;
+                            = notice[1]
+                
+
+                block content
+
+

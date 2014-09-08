@@ -1,0 +1,23 @@
+extends admin/base
+
+block content
+    h1 Stripe Plans
+    if plans.count
+        table.table.table-striped
+            thead
+                tr
+                    th ID
+                    th name
+                    th amount
+                    th interval
+                    th livemode
+                    th trial period days
+            tbody
+                each plan in plans.data
+                    tr
+                        td= plan.id
+                        td= plan.name
+                        td #{plan.amount} #{plan.currency}
+                        td #{plan.interval_count} #{plan.interval}
+                        td= plan.livemode
+                        td= plan.trial_period_days

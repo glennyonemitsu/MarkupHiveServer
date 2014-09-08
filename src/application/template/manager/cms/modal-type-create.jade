@@ -1,0 +1,16 @@
+.modal.hide.fade#modal-type-create
+    form
+        =type_create_form.csrf_token
+        .modal-header
+            button(type='button', data-dismiss='modal', aria-hidden='true').close &times;
+            h2 Create new content type
+        .modal-body
+            .row
+                .span3= type_create_form.name.label
+                .span3= type_create_form.name
+            .row
+                .span3= type_create_form.description.label
+                .span3= type_create_form.description
+        .modal-footer
+            button(type='button', data-dismiss='modal', aria-hidden='true').btn Cancel
+            button(type='submit').btn.btn-primary Create

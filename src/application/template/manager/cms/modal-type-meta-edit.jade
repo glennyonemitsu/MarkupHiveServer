@@ -1,0 +1,15 @@
+.modal.hide.fade#modal-type-meta-edit
+    form
+        .modal-header
+            button(type='button', data-dismiss='modal', aria-hidden='true').close &times;
+            h2 Edit content type meta details
+        .modal-body
+            .row
+                .span2 Name
+                .span4: input(type='text', placeholder='name', name='type-name')
+            .row
+                .span2 Description
+                .span4: input(type='text', placeholder='description', name='type-description')
+        .modal-footer
+            button(type='button', data-dismiss='modal', aria-hidden='true').btn Cancel
+            button(type='submit').btn.btn-primary Edit content type

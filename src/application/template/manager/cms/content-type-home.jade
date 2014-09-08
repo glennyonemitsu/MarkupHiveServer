@@ -1,0 +1,21 @@
+extends manager/base
+
+block content
+
+    table.table.table-striped#content-types
+        thead
+            tr
+                th name
+                th description
+        tbody
+            if types
+                each type in types
+                    tr
+                        td
+                            a(href='#{u("cms.content_type_edit", uuid=type.uuid)}')= type.name
+                        td= type.description
+            else
+                tr.empty
+                    td(colspan='2') There are currently no content types.
+
+    script(src='/static/js/content-type.js')

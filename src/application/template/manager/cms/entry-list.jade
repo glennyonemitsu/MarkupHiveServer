@@ -1,0 +1,40 @@
+extends manager/base
+
+block content
+
+    table.table.table-striped
+        thead
+            tr
+                th Title
+                th Timestamp
+                th Status
+        tfoot
+            tr
+                th(colspan='3')
+                    | Entries count: #{entries.count}
+        tbody
+            each entry in entries.entries
+                tr
+                    td: a(href='#{u("cms.entry_edit", uuid=ctype.uuid, euuid=entry._uuid)}')
+                        if entry._title
+                            = entry._title
+                        else
+                            = entry._uuid
+                    td
+                        | #{entry._year}-#{entry._month}-#{entry._day} 
+                        | #{entry._hour12}:#{entry._minute}:#{entry._second} 
+                        | #{entry._ampm} 
+                        | #{entry._timezone}
+                    td
+                        | #{entry._status}
+    .row
+        .span9
+            ul.pager
+                if entries.page_prev
+                    li.previous: a(href='#{entries.url_prev}')
+                        i.icon-chevron-left 
+                        | prev
+                if entries.page_next
+                    li.next: a(href='#{entries.url_next}')
+                        | next
+                        i.icon-chevron-right

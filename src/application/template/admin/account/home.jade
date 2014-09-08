@@ -1,0 +1,26 @@
+extends admin/base
+
+block content
+
+    h1 Account Lookup
+        
+    form.form-horizontal(method='post')
+        input(type='text', name='name', placeholder='account name', required)#account-name 
+        | 
+        button(type='submit') Search
+
+    if accounts
+        table.table.table-striped
+            caption
+                | Results for &ldquo;#{name}&rdquo;
+            thead
+                tr
+                    th ID
+                    th Name
+            tbody
+                each account in accounts
+                    tr
+                        td= account.id
+                        td
+                            a(href='#{u(".account_edit", account_id=account.id)}')
+                                = account.name

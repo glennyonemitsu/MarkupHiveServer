@@ -1,0 +1,11 @@
+.modal.hide.fade#modal-field-group-edit
+    form
+        .modal-header
+            button(type='button', data-dismiss='modal', aria-hidden='true').close &times;
+            h2 Edit field group name
+        .modal-body
+            input(type='text', placeholder='Field group name', name='field-group-name')
+            input(type='hidden', name='field-group-uuid')
+        .modal-footer
+            button(type='button', data-dismiss='modal', aria-hidden='true').btn Cancel
+            button(type='submit').btn.btn-primary Edit field group name

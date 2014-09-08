@@ -1,0 +1,30 @@
+extends manager/base
+
+block content
+    p
+        a(href='#{u('.api_keys_create')}') Create new key
+
+    if api_keys
+        table#api-keys(ng-controller='ApiKeysCtrl')
+            colgroup
+                col.key
+                col.secret
+                col.delete
+            thead
+                tr
+                    th Access Key
+                    th Access Secret
+                    th Delete
+            tbody
+                each key in api_keys
+                    tr
+                        td
+                            input(type='text', value='#{key.access_key}', disabled)
+                        td
+                            a.btn.btn-info.api-secret(data-content='#{key.secret64()}') click to reveal
+                        td 
+                            a(href="#{u('.api_keys_delete', access_key=key.access_key)}") delete
+    else
+        p There are no API Keys
+
+    script(src='/static/js/api-keys.js')

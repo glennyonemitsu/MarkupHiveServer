@@ -1,0 +1,21 @@
+form.form-horizontal(method='post')
+
+    = form.csrf_token
+
+    .control-group
+        p: :markdown
+            A content type is a general label used to define and organize the data 
+            fields and the entries. It is best to pick a simple and descriptive 
+            name such as blog, page, or record.
+
+    .control-group
+        .control-label= form.name.label
+        .controls=      form.name
+
+    .control-group
+        .control-label= form.description.label
+        .controls=      form.description
+
+    .control-group
+        .controls:      button(type='submit').btn.btn-primary Create new content type
+

@@ -1,0 +1,53 @@
+extends admin/base
+
+block content
+
+    h1 Account Edit
+
+    form.form-horizontal(method='post')
+        = form.csrf_token
+        .row
+            .control-group
+                .span3 Name
+                .span9= account.name
+            .control-group
+                .span3= form.join_timestamp.label
+                .span9= form.join_timestamp
+                    
+
+            .control-group
+                .span3= form.plan_code_name.label
+                .span9= form.plan_code_name
+            .control-group
+                .span3= form.plan_name.label
+                .span9= form.plan_name
+            .control-group
+                .span3= form.price.label
+                .span9= form.price
+
+            .control-group
+                .span3= form.transfer.label
+                .span9= form.transfer
+            .control-group
+                .span3= form.size_static.label
+                .span9= form.size_static
+            .control-group
+                .span3= form.size_total.label
+                .span9= form.size_total
+            .control-group
+                .span3= form.count_template.label
+                .span9= form.count_template
+            .control-group
+                .span3= form.count_static.label
+                .span9= form.count_static
+
+            .control-group
+                .span3= form.custom_domain.label
+                .span9= form.custom_domain
+            .control-group
+                .span3= form.cms.label
+                .span9= form.cms
+            .control-group
+                .span9.offset3
+                    button(type='submit') Update Account
+

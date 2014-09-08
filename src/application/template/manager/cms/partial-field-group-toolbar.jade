@@ -1,0 +1,18 @@
+.btn-toolbar
+    .btn-group
+        button.btn.btn-mini.modal-field-group-edit(data-target='#modal-field-group-edit', data-toggle='modal')
+            | change group name
+        button.btn.btn-mini.modal-field-group-delete.btn-danger(data-target='#modal-field-group-delete', data-toggle='modal')
+            | delete field group
+    .btn-group
+        button.btn.btn-mini.modal-field-group-shift(data-direction='left') 
+            | shift group left
+        button.btn.btn-mini.modal-field-group-shift(data-direction='right') 
+            | shift group right
+    .btn-group
+        button.btn.btn-mini.btn-primary.add-field 
+            | add a field to this group
+
+p.text-info: small 
+    | Note: all content types already have a title and slug field. You do not
+    | need to add these manually.

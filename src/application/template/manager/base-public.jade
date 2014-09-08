@@ -1,0 +1,31 @@
+!!! 5
+
+html
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+    if title
+        title= title
+    else
+        title Markup Hive Manager
+
+    link(href='//fonts.googleapis.com/css?family=Merriweather+Sans:400,300,700,800', rel='stylesheet', type='text/css')
+    link(href="/static/css/bootstrap.min.css", rel="stylesheet", media="screen")
+    link(href="/static/css/manager.css", rel="stylesheet", media="screen")
+
+    .container
+        if title
+            .row: .span12
+                h1= title
+
+        notices = get_flashes('notice')
+        if notices
+            each msg in notices
+                .row: .span12
+                    p.alert.alert-success= msg[1]
+
+        block content
+
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js")
+    script(src="/static/js/bootstrap.min.js")
+    script(src="/static/js/manager.js")

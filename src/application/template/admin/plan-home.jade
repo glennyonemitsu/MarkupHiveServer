@@ -1,0 +1,30 @@
+extends admin/base
+
+block content
+
+    p: a(href='#{u(".plan_create")}') Create a new plan
+
+    if plans
+        table.table.table-striped
+            caption Plans
+            thead
+                tr
+                    th ID
+                    th Usable
+                    th Code Name
+                    th Public Name
+            tbody
+                each plan in plans
+                    tr
+                        td= plan.id
+                        td
+                            if plan.available
+                                | yes
+                            else
+                                | no
+                        td
+                            a(href='#{u(".plan_edit", plan_id=plan.id)}')
+                                = plan.code_name
+                        td
+                            a(href='#{u(".plan_edit", plan_id=plan.id)}')
+                                = plan.name

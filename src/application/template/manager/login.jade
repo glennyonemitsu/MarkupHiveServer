@@ -1,0 +1,23 @@
+title = 'Manager Login'
+
+extends manager/base-public
+
+block content
+
+    if first_registration == 'true'
+        .row
+            p.alert.alert-success
+                | Thank you for registering. An email has been sent to confirm 
+                | your registration and provide you with some useful links.
+
+    form#login(method='post')
+        .row
+            .span1: label(for='username') Username
+            .span9: input#username(type='text', name='username')
+        .row
+            .span1: label(for='password') Password
+            .span9: input#password(type='password', name='password')
+        .row
+            .span9.offset1
+                button(type='submit') log in 
+                a(href='#{u("manager.forgot_password")}').forgot: small forgot password

@@ -1,0 +1,68 @@
+form(method='post')#content-entry
+    .row
+        .span6
+            .row: .span6
+                = form.content_entry_title.label
+                if form._action == 'add'
+                    = form.content_entry_title(class='span6 add')
+                elif form._action == 'edit'
+                    = form.content_entry_title(class='span6 edit')
+                if form.content_entry_title.errors
+                    ul.errors
+                        each error in form.content_entry_title.errors
+                            li= error
+            .row: .span6
+                = form.content_entry_slug.label
+                = form.content_entry_slug(class='span6')
+                if form.content_entry_slug.errors
+                    ul.errors
+                        each error in form.content_entry_slug.errors
+                            li= error
+            .row: .span6
+                = form.content_entry_tag.label
+                ul#content_entry_tag.tag_field
+                    if entry and entry.tag
+                        each tag in entry.tag
+                            li= tag
+        .span3
+            label
+                = form.content_entry_status.label
+                = form.content_entry_status
+                if form.content_entry_status.errors
+                    ul.errors
+                        each error in form.content_entry_status.errors
+                            li= error
+            = form.content_entry_save
+            if form._action == 'edit'
+                = form.content_entry_delete
+            = form.csrf_token
+
+    .tabbable
+        ul.nav.nav-tabs
+            each group in form._field_groups
+                li: a(href="##{group.uuid}", data-toggle='tab')= group.name
+        .tab-content
+            each group in form._field_groups
+                .tab-pane(id="#{group.uuid}")
+                    for field in group.fields
+                        .row: .span9
+                            = form[field].label
+                            if form[field].type == 'RichTextAreaField'
+                                .rte= form[field]
+                            elif form[field].type == 'TextAreaField'
+                                = form[field](class='span9', rows='10')
+                            elif form[field].type == 'TextField'
+                                = form[field](class='span9')
+                            else
+                                = form[field]
+                            if form[field].errors
+                                ul.errors
+                                    each error in form[field].errors
+                                        li= error
+
+script(src='/static/js/tag-it.min.js')
+script(src='/static/js/ckeditor/ckeditor.js')
+script(src='/static/js/cms-media.js')
+script(src='/static/js/content-entry.js')
+link(href="/static/css/jquery.tagit.css", rel="stylesheet", type="text/css")
+link(rel="stylesheet", type="text/css", href="//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css")

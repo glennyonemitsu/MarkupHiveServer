@@ -1,0 +1,14 @@
+.modal.hide.fade#modal-field-group-delete
+    form
+        .modal-header
+            button(type='button', data-dismiss='modal', aria-hidden='true').close &times;
+            h2 Delete field group
+        .modal-body
+            input(type='hidden', name='field-group-uuid')
+            p: :markdown
+                Are you sure you want to delete this field group? This group 
+                and all fields belonging to it will be deleted. This cannot be
+                undone.
+        .modal-footer
+            button(type='button', data-dismiss='modal', aria-hidden='true').btn Cancel
+            button(type='submit').btn.btn-primary Delete field group

@@ -1,0 +1,22 @@
+extends manager/base
+
+block content
+    h1  Account Settings
+
+    .row 
+        .span3
+            h2  App Domains
+            p.text-info
+                | Add a custom domain for your public application, then 
+                | create a CNAME entry for that domain to 
+                | #{g.application.name}.app.markuphive.com
+        .span6
+            ul.unstyled
+                li  Default: 
+                    a(href='http://#{g.application.name}.app.markuphive.com')
+                        | http://#{g.application.name}.app.markuphive.com
+            form(action='#{u(".add_app_domain")}', method='post').form-horizontal
+                .span3 
+                    input(type='text', name='domain', placeholder='add custom domain').span3
+                .span2
+                    button(type='submit') Add Domain

@@ -1,0 +1,53 @@
+extends manager/base
+
+block content
+
+    form#content-type
+        input(type='hidden', name='type-uuid', value='#{ctype.uuid}')
+
+        h2 Content type meta data 
+            .btn-group
+                button.btn.btn-mini(data-target='#modal-type-meta-edit', data-toggle='modal')
+                    | change name and description
+                button.btn.btn-mini.btn-danger(data-target='#modal-type-delete', data-toggle='modal')
+                    | delete
+        .row
+            .span2 Name
+            .span6#type-name= ctype.name
+        .row
+            .span2 Description
+            .span6#type-description= ctype.description
+
+        h2 Field groups 
+            .btn-group
+                button.btn.btn-mini.btn-primary(data-target='#modal-field-group-add', data-toggle='modal')#add-field-group 
+                    | add new field group
+
+        .tabbable#field-groups
+            #field-groups-nav
+                .control#field-groups-nav-left: i.icon-chevron-left
+                .control#field-groups-nav-right: i.icon-chevron-right
+                ul.nav.nav-tabs
+                    each group in ctype.field_groups
+                        li: a(data-toggle='tab', href='##{group.uuid}')
+                            | #{group.name} 
+            .tab-content
+                each group in ctype.field_groups
+                    .tab-pane(id='#{group.uuid}', data-uuid='#{group.uuid}', data-name='#{group.name}')
+                        include manager/cms/partial-field-group-toolbar
+                        .fields
+                            each field in group.fields
+                                include manager/cms/partial-field
+        
+    include manager/cms/modal-type-meta-edit
+    include manager/cms/modal-type-delete
+    include manager/cms/modal-field-group-add
+    include manager/cms/modal-field-group-edit
+    include manager/cms/modal-field-group-delete
+    #partials
+        #partial-field-group-toolbar
+            include manager/cms/partial-field-group-toolbar
+        #partial-field
+            include manager/cms/partial-field
+
+    script(src='/static/js/content-type.js')

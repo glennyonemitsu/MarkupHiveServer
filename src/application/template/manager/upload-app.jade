@@ -1,0 +1,24 @@
+extends manager/base
+
+block content
+    if uploaded
+        h1 already uploaded
+        p
+            | There is an app package already uploaded and waiting for
+            | processing. If you would like to delete it please use the
+            | form below
+
+        form(action='#{url_for("delete_uploaded_app")}', method='post')
+            div.row
+                label Type the word "confirm" in the box below
+                    input(type='text', name='confirmation')
+            div.row 
+                button(type='submit') delete
+                
+    else
+        h1 hi upload please
+        form(action='#{action}', method='post', enctype='multipart/form-data')
+            for input in form_args.fields
+                input(type='hidden', name="#{input['name']}", value="#{input['value']}")
+            input(type='file', name="file")
+            button(type='submit') upload

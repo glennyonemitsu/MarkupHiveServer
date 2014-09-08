@@ -1,0 +1,19 @@
+.modal.hide.fade#modal-type-delete
+    form
+        .modal-header
+            button(type='button', data-dismiss='modal', aria-hidden='true').close &times;
+            h2 Delete content type - WARNING
+        .modal-body
+            p
+                | Are you sure you want to delete this content type? If you do,
+                | YOU WILL LOSE ALL ENTRIES STORED UNDER THIS TYPE!
+                
+            p
+                | If you are sure you want to delete this content type and all
+                | related data, type "delete #{ctype.name}" without quotes in
+                | the text box below submit.
+
+            input(type='text', name='confirm-phrase')
+        .modal-footer
+            button(type='button', data-dismiss='modal', aria-hidden='true').btn Cancel
+            button(type='submit').btn.btn-primary Delete content type

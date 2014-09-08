@@ -1,0 +1,17 @@
+extends manager/base
+
+block content
+
+    :markdown
+        Setting a canonical domain ensures your web application will always be
+        seen in the domain specified. 
+        [Read more.](https://www.markuphive.com/docs/hosting/#canonical-domains)
+
+    form.form-horizontal(method='post')
+        =form.csrf_token
+        .control-group
+            .control-label= form.canonical_domain.label
+            .controls= form.canonical_domain
+
+        .control-group
+            .controls: button(type='submit').btn.btn-primary Submit

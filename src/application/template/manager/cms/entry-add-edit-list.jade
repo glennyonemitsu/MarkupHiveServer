@@ -1,0 +1,24 @@
+extends manager/base
+
+block content
+
+    table.table.table-striped#content-types
+        thead
+            tr
+                th name
+                th description
+        tbody
+            if ctypes
+                each type in ctypes
+                    tr
+                        td
+                            if action == 'edit'
+                                a(href='#{u("cms.entry_list", uuid=type.uuid)}')= type.name
+                            elif action == 'add'
+                                a(href='#{u("cms.entry_add", uuid=type.uuid)}')= type.name
+                        td= type.description
+            else
+                tr.empty
+                    td(colspan='2') There are currently no content types.
+
+

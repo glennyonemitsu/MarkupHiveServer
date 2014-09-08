@@ -1,0 +1,24 @@
+extends manager/base
+
+block content
+    .data-transfer
+
+        .row.month-subhead
+            .span5
+                h3 Monthly total
+            .span2
+                if prev_link
+                    a(href='/data-transfer/#{prev_year}/#{prev_month}/')
+                        i.icon-chevron-left
+                        | #{prev_year}/#{prev_month}
+            .span2.text-right
+                if next_link
+                    a(href='/data-transfer/#{next_year}/#{next_month}/')
+                        | #{next_year}/#{next_month}
+                        i.icon-chevron-right
+
+        if monthly_unlimited
+            p #{xfer_total} bytes transfered. You have unrestricted transfer limit. Please don't abuse it.
+        else
+            p #{xfer_total} out of #{monthly_limit}.
+
