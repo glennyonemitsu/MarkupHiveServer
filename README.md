@@ -37,7 +37,7 @@ Note: All keys and credentials have been removed, so the git history went with i
 
 `src/config/__init__.py`
 
-- a common way to store multiple configurations and 
+- a common way to store multiple configurations and load during different deployment levels
 
 
 
